@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VK SDK Kotlin</string>
+
+    <string name="txt_hello">Дарова,\n это приложение на котлине\n для просмотра и поиска\n друзей вк</string>
+    <string name="friends_no_item">У вас нет друзей</string>
+    <string name="friends_no_city">Город не указан</string>
+</resources>
