@@ -2,58 +2,53 @@ package com.example.vksdkkotlin.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.vksdkkotlin.R
+import com.example.vksdkkotlin.fragments.FriendsFragment
+import com.example.vksdkkotlin.fragments.LoginFragment
 import com.example.vksdkkotlin.presenters.LoginPresentor
 import com.example.vksdkkotlin.views.LoginView
 import com.github.rahatarmanahmed.cpv.CircularProgressView
 
-class MainActivity : MvpAppCompatActivity(), LoginView {
+class MainActivity : MvpAppCompatActivity(), MainListener {
 
 
-    private lateinit var mWait: CircularProgressView
-    private lateinit var mTxtHello: TextView
-    private lateinit var mBtnEnter: Button
 
-    @InjectPresenter
-    lateinit var loginPresentot: LoginPresentor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, LoginFragment()).commit()
 
 
-        mTxtHello = findViewById(R.id.txt_login_hello)
-        mBtnEnter = findViewById(R.id.buttonEnter)
-        mWait = findViewById(R.id.progress_view)
+    }
 
-        mBtnEnter.setOnClickListener {
-            loginPresentot.login(true)
+    override fun openFriendFragment() {
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.fragment_container, FriendsFragment())
+//            .commit()
+
+        var fm: FragmentManager = supportFragmentManager
+        var fragment: MvpAppCompatFragment = fm.findFragmentById(R.id.fragment_container) as MvpAppCompatFragment
+
+        if (fragment is LoginFragment ){
+            var fragmentReplace: MvpAppCompatFragment = FriendsFragment()
+            fm.beginTransaction()
+                .replace(R.id.fragment_container, fragmentReplace)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
         }
     }
 
-    override fun startLoading() {
-        mBtnEnter.visibility = View.GONE
-        mWait.visibility = View.VISIBLE
-    }
-
-    override fun endLoading() {
-        mBtnEnter.visibility = View.VISIBLE
-        mWait.visibility = View.GONE
-    }
-
-    override fun showError(text: String) {
-        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun openFrends() {
-        startActivity(Intent(applicationContext, FriendsActivity::class.java))
-    }
 
 }

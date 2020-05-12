@@ -11,7 +11,7 @@ class FrendsProvider(var presentor: FriendsPresentor) {
             val friendList: ArrayList<FriendModel> = ArrayList()
             if (hasFriend){
                 val friend1 = FriendModel(name = "Ivan", surname = "Komov", city = "Кинешма",
-                    avatar = "sun9-10.userapi.com/c636330/v636330883/2a476/PG0hl2K6jYA.jpg", isOnline = true)
+                    avatar = "https://sun9-10.userapi.com/c636330/v636330883/2a476/PG0hl2K6jYA.jpg", isOnline = true)
 
                 val friend2 = FriendModel(name = "Алена", surname = "Бойкова", city = "Москва",
                     avatar = "https://sun9-50.userapi.com/c206616/v206616808/de8f4/ZMPuO3zSe1U.jpg", isOnline = true)
