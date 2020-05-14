@@ -1,26 +1,22 @@
 package com.example.vksdkkotlin.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.vksdkkotlin.R
 import com.example.vksdkkotlin.fragments.FriendsFragment
 import com.example.vksdkkotlin.fragments.LoginFragment
-import com.example.vksdkkotlin.presenters.LoginPresentor
-import com.example.vksdkkotlin.views.LoginView
-import com.github.rahatarmanahmed.cpv.CircularProgressView
+//import com.vk.sdk.util.VKUtil
+//import com.vk.api.sdk.utils.VKUtils
+import com.vk.sdk.util.VKUtil
+
 
 class MainActivity : MvpAppCompatActivity(), MainListener {
 
+    private val TAG: String = MainActivity::class.java.simpleName
 
 
 
@@ -30,6 +26,8 @@ class MainActivity : MvpAppCompatActivity(), MainListener {
 
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, LoginFragment()).commit()
 
+//        val fingerprints: Array<String?>? = VKUtil.getCertificateFingerprint(this, this.packageName)
+//        Log.e(TAG, "fingerprint ${fingerprints?.get(0)}")
 
     }
 
