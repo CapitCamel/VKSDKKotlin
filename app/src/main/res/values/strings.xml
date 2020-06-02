@@ -12,4 +12,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
 
+    <integer name="com_vk_sdk_AppId">7465107</integer>
+
 </resources>
