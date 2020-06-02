@@ -6,6 +6,7 @@ import com.example.vksdkkotlin.presenters.FriendsPresentor
 
 
 class FrendsProvider(var presentor: FriendsPresentor) {
+
     fun testLoadFrends(hasFriend: Boolean){
         Handler().postDelayed({
             val friendList: ArrayList<FriendModel> = ArrayList()
@@ -27,5 +28,9 @@ class FrendsProvider(var presentor: FriendsPresentor) {
 
             presentor.friendLoaded(friendList = friendList)
         },2000)
+    }
+
+    fun loadFriends(){
+
     }
 }
