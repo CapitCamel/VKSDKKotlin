@@ -57,7 +57,7 @@ class LoginFragment : MvpAppCompatFragment(), LoginView {
 
         mBtnEnter.setOnClickListener {
             //loginPresentor.login(true)
-            VK.login(this.requireActivity(), arrayListOf(VKScope.PHOTOS))
+            VK.login(this.requireActivity(), arrayListOf(VKScope.FRIENDS))
         }
 
         return view
